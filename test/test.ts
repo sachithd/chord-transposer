@@ -261,5 +261,8 @@ describe('Transposer', () => {
   it ("Unconventional Key Signature transpose by semitones", () => {
     expect(transpose("A#m").up(1).toString())
         .to.equal("Bm");
+
+    expect(transpose("Abm").up(1).toString())
+        .to.equal("Am");
   });
 });
