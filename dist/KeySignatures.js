@@ -51,9 +51,9 @@ var KeySignatureEnum = /** @class */ (function (_super) {
         _this.Bb = new KeySignature('Bb', 'Gm', KeyType.FLAT, 10);
         _this.B = new KeySignature('B', 'G#m', KeyType.SHARP, 11);
         // Unconventional key signatures:
-        _this.Csharp = new KeySignature('C#', '', KeyType.SHARP, 1);
-        _this.Dsharp = new KeySignature('D#', '', KeyType.SHARP, 3);
-        _this.Gsharp = new KeySignature('G#', '', KeyType.SHARP, 8);
+        _this.Csharp = new KeySignature('C#', 'A#m', KeyType.SHARP, 1);
+        _this.Dsharp = new KeySignature('D#', 'B#m', KeyType.SHARP, 3);
+        _this.Gsharp = new KeySignature('G#', 'E#m', KeyType.SHARP, 8);
         _this.initEnum('KeySignature');
         return _this;
     }
