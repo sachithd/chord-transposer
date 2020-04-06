@@ -64,7 +64,7 @@ class KeySignatureEnum extends Enum<KeySignature> {
     new KeySignature('G#', 'E#m', KeyType.SHARP, 8);
 
   Cb: KeySignature =
-      new KeySignature('Cb', 'Abm', KeyType.FLAT, 11);
+    new KeySignature('Cb', 'Abm', KeyType.FLAT, 11);
 
   constructor() {
     super();
