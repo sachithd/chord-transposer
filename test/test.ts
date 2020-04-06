@@ -246,4 +246,20 @@ describe('Transposer', () => {
     expect(transpose("G#").fromKey("C#m").toKey("Cm").toString())
       .to.equal("G")
   });
+
+  it ("Chord Lines with special characters", () => {
+    expect(transpose('|C  |D  |C  |E  |').toKey('F').toString())
+        .to.equal('|F  |G  |F  |A  |');
+
+   /* expect(transpose("C D C\nSuddenly\nYou're here").toKey('F').toString())
+        .to.equal("F G F\nSuddenly\nYou're here");
+
+    expect(transpose('C D C\nA A home').toKey('F').toString())
+        .to.equal('F G F\nD D home');*/
+  });
+
+  it ("Unconventional Key Signature transpose by semitones", () => {
+    expect(transpose("A#m").up(1).toString())
+        .to.equal("Bm");
+  });
 });

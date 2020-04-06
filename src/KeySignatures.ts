@@ -55,13 +55,13 @@ class KeySignatureEnum extends Enum<KeySignature> {
   // Unconventional key signatures:
 
   Csharp: KeySignature =
-    new KeySignature('C#', '', KeyType.SHARP, 1);
+    new KeySignature('C#', 'A#m', KeyType.SHARP, 1);
 
   Dsharp: KeySignature =
-    new KeySignature('D#', '', KeyType.SHARP, 3);
+    new KeySignature('D#', 'B#m', KeyType.SHARP, 3);
 
   Gsharp: KeySignature =
-    new KeySignature('G#', '', KeyType.SHARP, 8);
+    new KeySignature('G#', 'E#m', KeyType.SHARP, 8);
 
   constructor() {
     super();

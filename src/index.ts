@@ -141,9 +141,14 @@ function parse(text: string, threshold?: number): any[][] {
     const newLine: any[] = [];
     let chordCount: number = 0;
     let tokenCount: number = 0;
-    const tokens: string[] = line.split(/(\s+|-)/g);
+    //const tokens: string[] = line.split(/(\s+|-)/g);
+    const tokens: string[] = line.split(/(\s+|-+|\|+|\/)/g); // Added by SD
 
     let lastTokenWasString: boolean = false;
+    let pipeCount = 0;
+    let slashCount = 0;
+
+
     for (let token of tokens) {
       let isTokenEmpty = token.trim() === '';
       if (!isTokenEmpty && CHORD_REGEX.test(token)) {
@@ -163,8 +168,15 @@ function parse(text: string, threshold?: number): any[][] {
         }
         lastTokenWasString = true;
       }
+
+      if (token.trim().indexOf('|') > -1) { // If a line has bars assume it is a chord line // Added by SD
+        pipeCount++;
+      }
+      if (token.trim().indexOf('/') > -1) { // If a line has bars assume it is a chord line // Added by SD
+        slashCount++;
+      }
     }
-    if (chordCount / tokenCount >= threshold) {
+    if (chordCount / tokenCount >= threshold || pipeCount > 1 || slashCount > 2) {
       newText.push(newLine);
     } else {
       newText.push([line]);
