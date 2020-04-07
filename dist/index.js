@@ -134,6 +134,8 @@ function parse(text, threshold) {
         var lastTokenWasString = false;
         var pipeCount = 0;
         var slashCount = 0;
+        var dashCount = 0;
+        //console.log(tokens);
         for (var _a = 0, tokens_1 = tokens; _a < tokens_1.length; _a++) {
             var token = tokens_1[_a];
             var isTokenEmpty = token.trim() === '';
@@ -161,13 +163,27 @@ function parse(text, threshold) {
             if (token.trim().indexOf('/') > -1) { // If a line has bars assume it is a chord line // Added by SD
                 slashCount++;
             }
+            if (token.trim().indexOf('-') > -1) { // If a line has bars assume it is a chord line // Added by SD
+                dashCount++;
+            }
+            //console.log(tokenCount);
+            //console.log(pipeCount,slashCount);
         }
-        if (chordCount / tokenCount >= threshold || pipeCount > 1 || slashCount > 2) {
+        if (chordCount > 0 && (pipeCount > 1 || slashCount > 2 || dashCount > 1)) {
+            // Possible chord line
+            newText.push(newLine);
+        }
+        else if (chordCount / tokenCount >= threshold) {
             newText.push(newLine);
         }
         else {
             newText.push([line]);
         }
+        /* if (chordCount / tokenCount >= threshold || pipeCount > 1 || slashCount > 2) {
+           newText.push(newLine);
+         } else {
+     
+         }*/
     }
     return newText;
 }
